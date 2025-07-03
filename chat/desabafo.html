@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre Elas - Espaço de Desabafo</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe0f0, #fff0f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #chat-container {
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            height: 80vh; /* Altura para melhor visualização */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Garante que nada transborde */
+        }
+        #messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto; /* Scroll para as mensagens */
+            border-bottom: 1px solid #eee;
+            list-style-type: none; /* Remove marcadores de lista */
+            margin: 0;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        #messages li {
+            background-color: var(--cinza-claro);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            margin-bottom: 0.75rem;
+            max-width: 85%;
+            word-wrap: break-word; /* Quebra palavras longas */
+            line-height: 1.4;
+        }
+        #messages li strong {
+            color: var(--rosa-principal); /* Cor para o nome do usuário */
+            margin-right: 5px;
+        }
+        #messages li.my-message {
+            background-color: var(--rosa-principal);
+            color: white;
+            margin-left: auto; /* Alinha à direita */
+            border-bottom-right-radius: 0.25rem;
+        }
+        #messages li.my-message strong {
+            color: white; /* Nome do usuário em branco nas suas próprias mensagens */
+        }
+        #messages li.other-message {
+            background-color: #e0e0e0;
+            color: #333;
+            margin-right: auto; /* Alinha à esquerda */
+            border-bottom-left-radius: 0.25rem;
+        }
+        #form {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            gap: 10px;
+        }
+        #input-message {
+            flex-grow: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--cinza);
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            background-color: var(--cinza-claro);
+            transition: border-color 0.2s;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        #input-message:focus {
+            outline: none;
+            border-color: var(--rosa-principal);
+            background-color: white;
+        }
+        #send-button {
+            background-color: var(--rosa-principal);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            user-select: none;
+        }
+        #send-button:hover {
+            background-color: var(--rosa-escuro);
+            transform: scale(1.02);
+        }
+        @media (max-width: 600px) {
+            #chat-container {
+                height: 90vh;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <ul id="messages"></ul>
+        <form id="form" action="">
+            <input id="input-message" autocomplete="off" placeholder="Digite sua mensagem..." />
+            <button id="send-button">Enviar</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const form = document.getElementById('form');
+        const input = document.getElementById('input-message');
+        const messages = document.getElementById('messages');
+
+        let username = '';
+
+        // Solicita o nome de usuário ao entrar no chat
+        do {
+            username = prompt('Qual é o seu nome de usuário para o desabafo? (Pode ser anônimo)').trim();
+            if (!username) {
+                alert('Por favor, digite um nome de usuário válido.');
+            }
+        } while (!username);
+
+        // Evento de envio do formulário
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value) {
+                // Envia a mensagem E o nome de usuário como um objeto
+                // Importante: vamos usar o socket.id como identificador único do cliente para evitar duplicação.
+                socket.emit('chat message', { text: input.value, user: username, id: socket.id });
+
+                // Adiciona a própria mensagem instantaneamente na interface
+                // Não é mais necessário adicionar aqui, pois o servidor irá emitir para todos,
+                // incluindo você mesmo, e a lógica de verificação evitará a duplicação.
+                // Vou manter o código de adição aqui, mas com a ressalva que a verificação abaixo o tornará único.
+                // const item = document.createElement('li');
+                // item.innerHTML = `<strong>Você:</strong> ${input.value}`;
+                // item.classList.add('my-message');
+                // messages.appendChild(item);
+                // messages.scrollTop = messages.scrollHeight; // Rola para o fim
+                input.value = ''; // Limpa o input
+            }
+        });
+
+        // Função auxiliar para adicionar mensagens
+        function addMessageToChat(data, isMyMessage) {
+            const item = document.createElement('li');
+            if (isMyMessage) {
+                item.innerHTML = `<strong>Você:</strong> ${data.text}`;
+                item.classList.add('my-message');
+            } else {
+                item.innerHTML = `<strong>${data.user}:</strong> ${data.text}`;
+                item.classList.add('other-message');
+            }
+            messages.appendChild(item);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Ouve por mensagens do servidor
+        socket.on('chat message', (data) => {
+            // VERIFICAÇÃO CHAVE: Só adiciona a mensagem se ela NÃO veio do seu próprio socket ID.
+            // Se o socket.id da mensagem for igual ao seu, significa que você já a adicionou localmente
+            // ou ela está vindo de uma de suas outras abas.
+            if (data.id === socket.id) {
+                // Se a mensagem veio do seu próprio ID, garanta que ela seja exibida como "Você"
+                // e não seja duplicada. A primeira adição (local) já aconteceu ou será tratada.
+                // Podemos remover a adição local no `form.addEventListener` se preferirmos
+                // que o servidor seja a única fonte da verdade, mas isso adiciona um pequeno delay.
+                // Com esta verificação, não haverá duplicação visual.
+                addMessageToChat(data, true); // Garante que a mensagem vinda do seu ID é sua
+            } else {
+                addMessageToChat(data, false);
+            }
+        });
+
+        // Ouve pelo histórico de mensagens ao conectar
+        socket.on('history', (history) => {
+            messages.innerHTML = ''; // Limpa mensagens existentes antes de carregar o histórico
+            history.forEach(data => {
+                // Ao carregar o histórico, sempre mostra as suas mensagens como "Você"
+                addMessageToChat(data, data.id === socket.id);
+            });
+            messages.scrollTop = messages.scrollHeight; // Rola para o fim após carregar o histórico
+        });
+    </script>
+</body>
+</html>
