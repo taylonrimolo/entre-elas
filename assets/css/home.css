@@ -11,7 +11,6 @@ body, html {
   position: relative;
   width: 100%;
   height: 280px;
-  /* MUDANÇA AQUI: Apontando para o caminho local da imagem */
   background-image: url('../img/banner-background.jpg');
   background-size: cover;
   background-position: center;
@@ -72,7 +71,7 @@ main.container {
 }
 
 a.card-button,
-div.card-button {
+div.card-button { /* Mantenha o div.card-button aqui para que o novo card também use o estilo base */
   background: white;
   border: 1.5px solid var(--rosa-principal); /* Usando variável global */
   border-radius: 18px;
@@ -93,7 +92,7 @@ div.card-button {
 
 a.card-button:hover,
 a.card-button:focus,
-div.card-button:hover,
+div.card-button:hover, /* Inclua o div.card-button aqui também */
 div.card-button:focus {
   box-shadow: 0 8px 20px rgba(214, 51, 132, 0.4); /* Usando cor direta para a sombra */
   transform: translateY(-5px);
@@ -112,7 +111,7 @@ svg.icon {
 }
 
 a.card-button p,
-div.card-button p {
+div.card-button p { /* Inclua o div.card-button aqui também */
   text-align: center;
   margin: 0;
 }
@@ -131,29 +130,34 @@ div.card-button p {
   text-decoration: underline;
 }
 
-/* Estilos para o Rodapé */
-.main-footer {
-    background-color: var(--rosa-principal); /* Usando a cor principal para o fundo */
-    color: white; /* Texto branco para contraste */
-    text-align: center;
-    padding: 30px 20px; /* Mais padding para espaçamento */
-    margin-top: 50px; /* Margem superior para separar do conteúdo */
-    border-radius: 20px 20px 0 0; /* Arredondar os cantos superiores */
-    box-shadow: 0 -3px 6px rgba(214, 51, 132, 0.15); /* Sombra para destacas */
+/* NOVO: Estilos para o Cartão de Objetivo (objective-card) */
+.objective-card {
+    width: 250px; /* Largura maior para acomodar mais texto */
+    height: auto; /* Altura automática para se ajustar ao conteúdo */
+    padding: 20px; /* Um pouco mais de padding */
+    cursor: default; /* Não é um botão clicável para navegação, então cursor padrão */
+    /* Você pode ajustar a cor do texto e fundo se quiser que ele se destaque */
+    /* background-color: var(--cinza-claro); */
+    /* border-color: var(--rosa-claro); */
 }
 
-.main-footer .footer-text {
-    max-width: 800px; /* Limita a largura do texto para melhor leitura */
-    margin: 0 auto 15px auto; /* Centraliza e adiciona margem inferior */
-    font-size: 15px;
-    line-height: 1.6;
+.objective-card:hover,
+.objective-card:focus {
+    transform: none; /* Remove o efeito de hover de "subir" já que não é um link/botão */
+    box-shadow: 0 3px 6px rgba(214, 51, 132, 0.15); /* Mantém a sombra original ou ajuste se quiser outro efeito */
 }
 
-.main-footer .footer-copyright {
-    font-size: 13px;
-    opacity: 0.8; /* Um pouco mais transparente */
+.objective-card .objective-text {
+    font-size: 13px; /* Tamanho da fonte menor para caber mais texto */
+    line-height: 1.5; /* Espaçamento entre linhas para melhor legibilidade */
+    text-align: justify; /* Justifica o texto para um visual mais limpo em blocos */
+    margin-top: 10px; /* Pequena margem superior para afastar do ícone */
+    color: var(--cor-texto-principal); /* Usa a cor de texto principal definida globalmente */
+    font-weight: normal; /* Garante que o texto não seja negrito como o dos outros cards */
+    user-select: text; /* Permite que o texto dentro do card seja selecionado */
 }
 
+/* Media Query para responsividade dos cards */
 @media (max-width: 520px) {
   main.container {
     gap: 18px;
@@ -171,16 +175,12 @@ div.card-button p {
   .banner-text {
     font-size: 22px;
   }
-  /* Media Query para responsividade do rodapé */
-  .main-footer {
-      padding: 25px 15px;
-      margin-top: 30px;
-      border-radius: 0; /* Em telas muito pequenas, pode remover o arredondamento */
+  /* Ajustes para o objective-card em telas menores */
+  .objective-card {
+      width: 100%; /* Ocupa a largura total para melhor leitura em mobile */
+      max-width: calc(100% - 30px); /* Ajusta para padding do container */
   }
-  .main-footer .footer-text {
-      font-size: 14px;
-  }
-  .main-footer .footer-copyright {
+  .objective-card .objective-text {
       font-size: 12px;
   }
 }
