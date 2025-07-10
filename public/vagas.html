@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vagas para Mulheres</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe0f0, #fff0f6);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .vagas-container {
+      background: #fff;
+      margin-top: 2.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 700px;
+      width: 95vw;
+      padding: 2.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      animation: fadeIn 0.7s;
+    }
+    .vaga {
+      border-left: 5px solid var(--rosa-principal);
+      padding: 1.2rem 1.2rem 1.2rem 1.5rem;
+      border-radius: 1rem;
+      background: #fff0f6;
+      box-shadow: 0 2px 8px rgba(214,51,132,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .vaga-titulo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--rosa-principal);
+    }
+    .vaga-empresa {
+      font-weight: 600;
+      color: #555;
+    }
+    .vaga-local, .vaga-tipo {
+      font-size: 0.98rem;
+      color: #888;
+    }
+    .vaga-descricao {
+      margin: 0.5rem 0 0.2rem 0;
+      color: #333;
+    }
+    .vaga-contato {
+      font-size: 0.97rem;
+      color: var(--rosa-escuro);
+      font-weight: 500;
+    }
+    .voltar-btn {
+      margin-top: 1.5rem;
+      background: var(--rosa-principal);
+      color: white;
+      border: none;
+      border-radius: 0.8rem;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .voltar-btn:hover {
+      background: var(--rosa-escuro);
+      transform: scale(1.04);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .vagas-container { padding: 1.2rem 0.3rem; }
+      .vaga { padding: 1rem 0.7rem 1rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <img src="assets/img/logo.svg" alt="Logo Entre Elas" style="height:38px;vertical-align:middle;">
+      <span class="site-title">Entre Elas</span>
+    </div>
+    <div class="header-right">
+      <button onclick="window.location.href='/pagina-principal'" class="logout-btn">Voltar</button>
+    </div>
+  </header>
+  <div class="vagas-container">
+    <h1 style="text-align:center;color:var(--rosa-principal);margin-bottom:1.5rem;">Vagas para Mulheres</h1>
+    <div class="vaga">
+      <div class="vaga-titulo">Desenvolvedora Front-end Júnior</div>
+      <div class="vaga-empresa">Tech4Her</div>
+      <div class="vaga-local">Remoto</div>
+      <div class="vaga-tipo">CLT</div>
+      <div class="vaga-descricao">Participe de um time diverso e inovador! Procuramos mulheres apaixonadas por tecnologia para atuar com React e UX.</div>
+      <div class="vaga-contato">Contato: talentos@tech4her.com</div>
+    </div>
+    <div class="vaga">
+      <div class="vaga-titulo">Analista de Dados Pleno</div>
+      <div class="vaga-empresa">Mulheres em Dados</div>
+      <div class="vaga-local">São Paulo/SP (Híbrido)</div>
+      <div class="vaga-tipo">PJ</div>
+      <div class="vaga-descricao">Buscamos mulheres com experiência em Python e SQL para projetos de impacto social. Ambiente acolhedor e colaborativo.</div>
+      <div class="vaga-contato">Contato: recrutamento@mulheresemdados.org</div>
+    </div>
+    <div class="vaga">
+      <div class="vaga-titulo">Estágio em Marketing Digital</div>
+      <div class="vaga-empresa">Elas Criam</div>
+      <div class="vaga-local">Remoto</div>
+      <div class="vaga-tipo">Estágio</div>
+      <div class="vaga-descricao">Oportunidade para mulheres criativas que querem aprender e crescer em marketing de conteúdo e redes sociais.</div>
+      <div class="vaga-contato">Contato: estagio@elascriam.com</div>
+    </div>
+    <button class="voltar-btn" onclick="window.location.href='/pagina-principal'">Voltar para o início</button>
+  </div>
+  <footer class="main-footer">
+    <nav>
+      <a href="sobre.html" class="footer-link">Sobre</a> ·
+      <a href="#" class="footer-link">Contato</a> ·
+      <a href="#" class="footer-link">Termos de Uso</a>
+    </nav>
+    <div class="footer-copy">&copy; 2025 Entre Elas. Todos os direitos reservados.</div>
+  </footer>
+</body>
+</html> 

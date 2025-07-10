@@ -1,0 +1,201 @@
+/* assets/css/auth.css */
+:root {
+  --rosa-principal: #d63384;
+  --rosa-escuro: #b62a6d;
+  --cinza-claro: #f7f7f7;
+  --cinza: #ccc;
+  --texto-error: #e63946;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffe0f0, #fff0f6);
+  font-family: 'Inter', Arial, sans-serif;
+}
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+.form-card {
+  background: #fff;
+  padding: 2.2rem 1.5rem 2rem 1.5rem;
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 16px rgba(214, 51, 132, 0.07);
+  border: 1px solid #f3e6f1;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+.form-card:focus-within {
+  box-shadow: 0 4px 24px rgba(214, 51, 132, 0.13);
+  border-color: var(--rosa-principal);
+}
+.form-group {
+  width: 100%;
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.1rem;
+  display: block;
+}
+.input-wrapper input[type="password"] {
+  width: 100%;
+  padding-right: 2.7rem !important;
+  box-sizing: border-box;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 1rem 2.2rem 1rem 1rem;
+  border-radius: 0.7rem;
+  border: 1.1px solid #e0e0e0;
+  font-size: 1.08rem;
+  background-color: #fafbfc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-weight: 400;
+  color: #222;
+  box-shadow: none;
+}
+input[type="password"] {
+  padding-right: 2.5rem !important;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--rosa-principal);
+  background: #fff;
+  box-shadow: 0 0 0 2px #ffe0f0;
+}
+.toggle-password {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--rosa-principal);
+  height: 2.2rem;
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  padding: 0;
+}
+.toggle-password:hover {
+  color: var(--rosa-escuro);
+}
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  border: none;
+  background-color: var(--rosa-principal);
+  color: white;
+  font-size: 1.09rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px #0001;
+  margin-top: 0.2rem;
+  letter-spacing: 0.01em;
+}
+button[type="submit"]:hover {
+  background-color: var(--rosa-escuro);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 2px 8px #d6338422;
+}
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--rosa-principal);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1.1rem;
+  display: block;
+  text-align: left;
+  padding: 0;
+  transition: color 0.2s;
+}
+.link-btn:hover {
+  color: var(--rosa-escuro);
+  text-decoration: underline;
+}
+.feedback {
+  user-select: none;
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  background: #fff0f6;
+  border: 1.2px solid var(--texto-error);
+  color: var(--texto-error);
+  min-height: 1.5em;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 1;
+  transform: translateY(0);
+  text-align: center;
+}
+.feedback.success {
+  background: #e6ffed;
+  border-color: var(--texto-success);
+  color: var(--texto-success);
+}
+.feedback.hide {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.senha-requisitos {
+  font-size: 0.93rem;
+  color: #666;
+  margin-top: 0.2rem;
+  margin-bottom: 0.7rem;
+  padding-left: 0.2rem;
+  list-style: disc inside;
+}
+.senha-requisitos li {
+  margin-bottom: 0.1rem;
+}
+@media (max-width: 700px) {
+  .form-card {
+    padding: 1.1rem 0.3rem 1.2rem 0.3rem;
+    border-radius: 0.8rem;
+    max-width: 98vw;
+    gap: 0.7rem;
+  }
+  input[type="text"],
+  input[type="password"] {
+    font-size: 0.98rem;
+    padding: 0.8rem 1.2rem 0.8rem 0.8rem;
+  }
+  button[type="submit"] {
+    font-size: 0.98rem;
+    padding: 0.8rem;
+  }
+  input[type="password"] {
+    padding-right: 2.2rem !important;
+  }
+  .toggle-password {
+    right: 0.4rem;
+    font-size: 1.05rem;
+  }
+}

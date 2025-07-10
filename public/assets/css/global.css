@@ -1,0 +1,574 @@
+/* assets/css/global.css */
+
+:root {
+    /* Cores primárias e de destaque */
+    --rosa-principal: #d63384;
+    --rosa-escuro: #b62a6d;
+    --lilas-suave: #e0bbe4;
+    
+    /* Cores neutras e de fundo */
+    --cinza-claro: #f7f7f7;
+    --cinza: #ccc;
+    --fundo-geral: #ffebf7; /* Fundo suave para o corpo do site */
+    --cor-texto-principal: #333; /* Cor de texto padrão */
+    --cinza-escuro: #333333;
+    --espaco-padrao: 1.5rem;
+    --borda-padrao: 1.2rem;
+    --sombra-padrao: 0 4px 24px rgba(0,0,0,0.10);
+
+    /* Cores para feedback (erros, sucesso) */
+    --texto-error: #e63946; /* Vermelho vibrante para mensagens de erro */
+    --texto-success: #28a745; /* Verde para mensagens de sucesso */
+
+    /* Sombras e transições comuns */
+    --sombra-padrao: 0 10px 30px rgba(0,0,0,0.1); /* Sombra padrão */
+    --transicao-padrao: 0.3s ease; /* Transição suave para interações */
+    --container-max-width: 1200px;
+    --container-padding: 2rem;
+    --radius-padrao: 1.2rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.3rem;
+    --font-size-sm: 0.95rem;
+}
+
+/* Reset CSS básico para garantir consistência entre navegadores */
+* {
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove preenchimentos padrão */
+}
+
+/* Estilos aplicados globalmente ao corpo do documento e ao HTML */
+/* IMPORTANTE: As regras de layout e centralização (display: flex, min-height, etc.) */
+/* FORAM REMOVIDAS daqui e serão aplicadas ESPECIFICAMENTE em auth.css ou home.css. */
+body, html {
+    font-family: 'Inter', Arial, sans-serif; /* Fonte moderna e legível para todas as páginas */
+    color: var(--cinza-escuro); /* Cor de texto padrão para todas as páginas */
+    line-height: 1.6; /* Aumenta o espaçamento entre linhas para melhor legibilidade */
+    background: var(--fundo-geral);
+    font-size: var(--font-size-base);
+    min-height: 100vh;
+    /* NENHUM user-select: none; AQUI! Isso será específico por elemento ou por página. */
+}
+
+main, .main-container, .container-global {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--container-padding);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    color: var(--rosa-principal);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+
+p, ul, ol {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+ul, ol {
+    padding-left: 1.2rem;
+}
+
+button, .btn {
+    background: var(--rosa-principal);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-padrao);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px #0001;
+    margin-bottom: 0.5rem;
+}
+button:hover, .btn:hover {
+    background: var(--rosa-escuro);
+    transform: scale(1.03);
+}
+
+input, textarea, select {
+    border-radius: 0.7rem;
+    border: 2px solid var(--cinza);
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    background: #fff8fc;
+    margin-bottom: 1rem;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+    border-color: var(--rosa-principal);
+    outline: 2px solid var(--rosa-principal);
+    background: #fff;
+}
+
+.card, .form-card, .inicio-container {
+    border-radius: var(--borda-padrao);
+    box-shadow: var(--sombra-padrao);
+    padding: var(--espaco-padrao);
+}
+
+img, picture, video {
+    max-width: 100%;
+    border-radius: 0.7rem;
+    display: block;
+}
+
+footer {
+    width: 100%;
+    background: #fff0f6;
+    color: var(--rosa-principal);
+    text-align: center;
+    padding: 1.2rem 0 0.7rem 0;
+    font-size: var(--font-size-sm);
+    margin-top: 2rem;
+    border-top: 1.5px solid var(--cinza);
+}
+
+/* Regras para inputs, que são comuns em vários tipos de formulários */
+input[type="text"],
+input[type="password"],
+input[type="email"], /* Adicionado, caso use email */
+input[type="number"], /* Adicionado, caso use number */
+textarea { /* Adicionado para consistência */
+    /* Por padrão, inputs e textareas devem permitir seleção de texto */
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Estilos para o input em estado de inválido (com erro) - Pode ser global ou específico do auth */
+input[aria-invalid="true"] {
+    border-color: var(--texto-error) !important;
+    box-shadow: 0 0 5px rgba(230, 57, 70, 0.5) !important;
+}
+
+/* Estilos para mensagens de feedback (erros e sucesso) - Globais para uso em qualquer página */
+.feedback {
+    color: var(--texto-error);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    min-height: 1.3em;
+    font-weight: 600;
+    /* user-select: none; pode ser aplicado individualmente no HTML ou em arquivos específicos */
+}
+
+.feedback.success {
+    color: var(--texto-success);
+}
+
+/* Adicionando uma regra geral para desabilitar seleção de texto em elementos não-input */
+/* Essa regra pode ser sobrescrita. É um bom ponto de partida global. */
+body *:not(input):not(textarea) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Reabilita a seleção para links e elementos com cursor de texto, caso seja necessário */
+a, button, [tabindex="0"], [contenteditable="true"] {
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    main, .main-container, .container-global {
+        padding: 1.2rem;
+    }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; }
+}
+@media (max-width: 600px) {
+    main, .main-container, .container-global {
+        padding: 0.5rem;
+    }
+    .card {
+        padding: 1rem;
+    }
+    h1 { font-size: 1.2rem; }
+    h2 { font-size: 1.05rem; }
+    button, .btn {
+        font-size: 0.98rem;
+        padding: 0.7rem 1rem;
+    }
+}
+
+#objetivo, #frase-impacto, #depoimentos {
+  margin: 40px auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+#frase-impacto blockquote {
+  font-size: 1.3em;
+  color: #a14e8e;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.carrossel {
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slide.ativo {
+  display: flex;
+}
+
+.slide img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #a14e8e;
+}
+
+.slide p {
+  font-size: 1.1em;
+  color: #333;
+}
+
+.slide span {
+  display: block;
+  margin-top: 8px;
+  color: #a14e8e;
+  font-weight: bold;
+}
+
+.carrossel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 2em;
+  color: #a14e8e;
+  cursor: pointer;
+  padding: 0 10px;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.carrossel .prev { left: 0; }
+.carrossel .next { right: 0; }
+
+@media (max-width: 600px) {
+  .carrossel {
+    max-width: 95vw;
+  }
+  .slide img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Remover estilos antigos da home para evitar conflito com a nova estrutura da index.html */
+.home-main, .home-card, .home-header, .home-header h1, .home-subtitle, .home-btns, .home-btns button {
+  all: unset;
+}
+
+#objetivo {
+  text-align: center;
+}
+#objetivo h2 {
+  color: var(--rosa-principal);
+  font-size: 1.4rem;
+  margin-bottom: 0.7rem;
+}
+#objetivo p {
+  color: #444;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+#frase-impacto {
+  text-align: center;
+  margin: 0 auto 0.5rem auto;
+}
+#frase-impacto blockquote {
+  font-size: 1.18rem;
+  color: #a14e8e;
+  font-style: italic;
+  margin: 0.5rem 0 0 0;
+  padding: 0.7rem 0.5rem 0.2rem 0.5rem;
+  border-left: 4px solid #d63384;
+  background: #fff0f6;
+  border-radius: 0 1rem 1rem 0;
+}
+
+#depoimentos {
+  margin-top: 0.5rem;
+}
+#depoimentos h2 {
+  color: var(--rosa-principal);
+  font-size: 1.2rem;
+  margin-bottom: 1.1rem;
+  font-weight: 700;
+}
+.carrossel {
+  position: relative;
+  overflow: hidden;
+  max-width: 370px;
+  margin: 0 auto;
+  background: #fff8fc;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #d6338422;
+  padding: 1.2rem 0.7rem 1.5rem 0.7rem;
+}
+.slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  min-height: 210px;
+}
+.slide.ativo {
+  display: flex;
+}
+.slide img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 3px solid #a14e8e;
+  box-shadow: 0 2px 8px #d6338422;
+}
+.slide p {
+  font-size: 1.05em;
+  color: #333;
+  margin-bottom: 0.2rem;
+}
+.slide span {
+  display: block;
+  margin-top: 6px;
+  color: #a14e8e;
+  font-weight: bold;
+  font-size: 0.98em;
+}
+.carrossel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 2em;
+  color: #a14e8e;
+  cursor: pointer;
+  padding: 0 10px;
+  z-index: 2;
+  opacity: 0.7;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.carrossel button:hover {
+  background: #ffe0f0;
+  opacity: 1;
+}
+.carrossel .prev { left: 0; }
+.carrossel .next { right: 0; }
+
+@media (max-width: 700px) {
+  .home-card {
+    max-width: 98vw;
+    padding: 18px 4vw 18px 4vw;
+  }
+  .carrossel {
+    max-width: 95vw;
+    padding: 1.2rem 0.2rem 1.5rem 0.2rem;
+  }
+}
+@media (max-width: 480px) {
+  .home-card {
+    padding: 10px 2vw 10px 2vw;
+    border-radius: 1.2rem;
+  }
+  .home-header h1 {
+    font-size: 1.3rem;
+  }
+  #objetivo h2, #depoimentos h2 {
+    font-size: 1.05rem;
+  }
+  #objetivo p, .slide p {
+    font-size: 0.98rem;
+  }
+  .slide img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.main-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem 0.7rem 1.5rem;
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+  border-bottom: 1.5px solid var(--lilas-suave);
+  position: relative;
+  z-index: 10;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.site-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--rosa-principal);
+  letter-spacing: -0.5px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.logout-btn {
+  background: var(--rosa-principal);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.logout-btn:hover {
+  background: var(--rosa-escuro);
+}
+
+.main-footer {
+  width: 100%;
+  background: #fff0f6;
+  color: var(--rosa-principal);
+  text-align: center;
+  padding: 1.2rem 0 0.7rem 0;
+  font-size: 1rem;
+  margin-top: 2rem;
+  border-top: 1.5px solid var(--lilas-suave);
+}
+.footer-link {
+  color: var(--rosa-principal);
+  text-decoration: none;
+  margin: 0 0.3rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: var(--rosa-escuro);
+  text-decoration: underline;
+}
+.footer-copy {
+  margin-top: 0.5rem;
+  font-size: 0.97rem;
+  color: var(--rosa-escuro);
+}
+@media (max-width: 600px) {
+  .main-header, .main-footer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .site-title {
+    font-size: 1.05rem;
+  }
+  .header-left img {
+    height: 30px !important;
+  }
+}
+
+/* Styleguide - Guia Visual */
+.styleguide-section {
+  margin: 2.5rem auto 2rem auto;
+  max-width: 700px;
+  background: #fff;
+  border-radius: var(--borda-padrao);
+  box-shadow: var(--sombra-padrao);
+  padding: 2rem 1.5rem;
+}
+.styleguide-title {
+  font-size: 2rem;
+  color: var(--rosa-principal);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+.styleguide-subtitle {
+  font-size: 1.2rem;
+  color: var(--rosa-escuro);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.styleguide-color {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 1.2rem;
+  border: 2px solid #eee;
+  vertical-align: middle;
+}
+.styleguide-token {
+  background: #fafbfc;
+  border-radius: 0.7rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+.styleguide-card {
+  background: #fff0f6;
+  border: 1.5px solid var(--rosa-principal);
+  border-radius: var(--borda-padrao);
+  box-shadow: var(--sombra-padrao);
+  padding: 1.2rem 1rem;
+  margin-bottom: 1rem;
+  color: var(--cinza-escuro);
+  font-family: 'Inter', Arial, sans-serif;
+  max-width: 320px;
+  margin-right: 1.2rem;
+  display: inline-block;
+}
+.styleguide-btn {
+  background: var(--rosa-principal);
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 1rem;
+  margin-bottom: 0.7rem;
+  transition: background 0.2s;
+}
+.styleguide-btn:hover {
+  background: var(--rosa-escuro);
+}

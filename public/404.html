@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Página não encontrada</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #fff0f6 url('assets/img/banner-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(255, 240, 246, 0.92);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .container-404 {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      border-radius: 24px;
+      box-shadow: 0 4px 24px #0002;
+      background: rgba(255,255,255,0.85);
+      max-width: 90vw;
+    }
+    .emoji {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      animation: bounce 1.2s infinite alternate;
+    }
+    @keyframes bounce {
+      to { transform: translateY(-10px); }
+    }
+    h1 {
+      color: var(--rosa-principal);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #555;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 350px;
+    }
+    .links-uteis {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    a.button {
+      background: var(--rosa-principal);
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #0001;
+      transition: background 0.2s, transform 0.2s;
+      font-size: 1rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    a.button:hover {
+      background: #d81b60;
+      transform: scale(1.05);
+    }
+    @media (max-width: 600px) {
+      .container-404 { padding: 1rem 0.5rem; }
+      h1 { font-size: 2rem; }
+      .emoji { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container-404">
+    <div class="emoji" aria-hidden="true">🚧</div>
+    <h1>404</h1>
+    <p>Desculpe, não conseguimos encontrar a página que você procurava.<br>
+    Mas não se preocupe, estamos aqui para ajudar você a encontrar o caminho certo! 😊</p>
+    <div class="links-uteis">
+      <a href="/pagina-principal.html" class="button">Página Principal</a>
+      <a href="/vagas.html" class="button">Ver Vagas</a>
+      <a href="/chat/desabafo.html" class="button">Ir para o Chat</a>
+    </div>
+    <a href="/" class="button" aria-label="Voltar para a página inicial">Voltar para a página inicial</a>
+  </div>
+</body>
+</html> 

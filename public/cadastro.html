@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro - Entre Elas</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/auth.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main class="container" role="main" aria-labelledby="tituloCadastro" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:0;">
+      <div class="form-card">
+        <img src="assets/img/logo.svg" alt="Logo Entre Elas" style="height:44px; margin-bottom: 1.1rem; display:block; margin-left:auto; margin-right:auto;">
+        <h2 id="tituloCadastro">Criar Conta</h2>
+        <form id="form-cadastro" autocomplete="off">
+          <div class="form-group">
+            <label for="cadastro-username">Nome de usuária</label>
+            <input type="text" id="cadastro-username" required placeholder="Digite seu nome de usuária" autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="cadastro-password">Senha</label>
+            <div class="input-wrapper">
+              <input type="password" id="cadastro-password" required aria-describedby="cadastro-requisitos" placeholder="Digite sua senha" autocomplete="new-password" />
+              <button type="button" class="toggle-password" onclick="togglePass('cadastro-password', this)" aria-label="Mostrar ou ocultar senha">👁️</button>
+            </div>
+            <ul class="senha-requisitos" id="cadastro-requisitos">
+              <li>Mínimo 6 caracteres</li>
+              <li>Pelo menos uma letra e um número</li>
+            </ul>
+          </div>
+          <div class="form-group">
+            <label for="cadastro-confirm-password">Confirmar senha</label>
+            <div class="input-wrapper">
+              <input type="password" id="cadastro-confirm-password" required placeholder="Confirme sua senha" autocomplete="new-password" />
+              <button type="button" class="toggle-password" onclick="togglePass('cadastro-confirm-password', this)" aria-label="Mostrar ou ocultar senha">👁️</button>
+            </div>
+          </div>
+          <button type="submit" id="cadastro-submit">Cadastrar</button>
+          <div id="msg" class="feedback error" role="alert" aria-live="assertive" aria-atomic="true"></div>
+          <div id="msg-success" class="feedback success hide" role="status" aria-live="polite" aria-atomic="true"></div>
+        </form>
+      </div>
+    </main>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/auth.js"></script>
+  </body>
+</html>

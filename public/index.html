@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entre Elas - Bem-Vinda!</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe0f0, #fff0f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .inicio-container {
+      background: #fff;
+      border-radius: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      max-width: 400px;
+      width: 100%;
+      padding: 2.5rem 2rem 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.7s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .inicio-container h1 {
+      color: var(--rosa-principal);
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+    .inicio-container p {
+      color: #555;
+      font-size: 1.08rem;
+      margin-bottom: 2.2rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .inicio-btns {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .inicio-btns button {
+      width: 100%;
+      padding: 0.95rem;
+      border-radius: 1.2rem;
+      font-size: 1.08rem;
+      font-weight: 600;
+      background: var(--rosa-principal);
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px #0001;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .inicio-btns button:hover {
+      background: var(--rosa-escuro);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 480px) {
+      .inicio-container {
+        padding: 1.5rem 0.7rem;
+        border-radius: 1.2rem;
+        max-width: 98vw;
+      }
+      .inicio-container h1 {
+        font-size: 1.3rem;
+      }
+      .inicio-container p {
+        font-size: 0.98rem;
+      }
+      .inicio-btns button {
+        font-size: 0.98rem;
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="inicio-container">
+    <img src="assets/img/logo.svg" alt="Logo Entre Elas" style="height:48px; margin-bottom: 1.2rem; display:block; margin-left:auto; margin-right:auto;">
+    <h1>Bem-vinda ao Entre Elas 💗</h1>
+    <p>Um espaço de apoio e transformação para mulheres.</p>
+    <div class="inicio-btns">
+      <button onclick="window.location.href='/login'">Já tenho login</button>
+      <button onclick="window.location.href='/cadastro'">Criar novo login</button>
+    </div>
+  </div>
+  <script src="assets/js/global.js"></script>
+</body>
+</html>

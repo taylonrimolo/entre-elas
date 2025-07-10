@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entre Elas - Início</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-left">
+        <img src="assets/img/logo.svg" alt="Logo Entre Elas" style="height:38px;vertical-align:middle;">
+        <span class="site-title">Entre Elas</span>
+      </div>
+      <div class="header-right">
+        <span id="user-logado" style="font-weight:600;color:var(--rosa-principal);"></span>
+        <button onclick="logout()" class="logout-btn">Sair</button>
+      </div>
+    </header>
+
+    <section
+      class="banner"
+      role="banner"
+      aria-label="Banner do site Entre Elas"
+    >
+      <div class="banner-text" aria-live="polite">
+        Um espaço de acolhimento, leveza e transformação feminina.
+      </div>
+      <div
+        id="motivationalBalloon"
+        class="motivational-balloon"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+    </section>
+
+    <main class="container">
+      <a
+        href="https://msha.ke/psicologamarcelaf/ "
+        target="_blank"
+        rel="noopener"
+        class="card-button"
+        aria-label="Rede de apoio psicológico"
+      >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 12c2 0 3-2 3-4s-1-4-3-4-3 2-3 4 1 4 3 4z" />
+          <path d="M6 20v-2c0-2 4-3 6-3s6 1 6 3v2" />
+          <path d="M2 20h20" />
+        </svg>
+        <p>Rede de apoio psicológico</p>
+      </a>
+
+      <!-- Botão atualizado para a rota /vagas -->
+      <a
+        href="/vagas"
+        class="card-button"
+        aria-label="Vagas de emprego seguras"
+      >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="7" width="16" height="10" rx="2" ry="2" />
+          <path d="M4 7l8 5 8-5" />
+          <path d="M12 12v5" />
+        </svg>
+        <p>Vagas de emprego seguras</p>
+      </a>
+
+      <a
+        href="#"
+        tabindex="0"
+        role="button"
+        class="card-button"
+        aria-expanded="false"
+        aria-controls="emergencia-info"
+        aria-label="Contatos de emergência, clique para ver contatos"
+      >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12" y2="8" />
+        </svg>
+        <p>Contatos de emergência</p>
+        <div id="emergencia-info" class="hidden-info" hidden>
+          <strong>Números de denúncia e apoio (ES):</strong><br />
+          Disque 180 – Central de Atendimento à Mulher<br />
+          190 – Polícia Militar<br />
+          Disque 181 – Polícia Civil<br />
+          CVV - 188 – Centro de Valorização da Vida<br />
+          DEAM - (27) 3333-1234
+        </div>
+      </a>
+
+      <!-- Botão atualizado para a rota /chat/desabafo -->
+      <a
+        href="/chat"
+        class="card-button"
+        aria-label="Espaço de desabafo"
+      >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+          <path d="M8 10h8M8 14h6" />
+        </svg>
+        <p>Espaço de desabafo</p>
+      </a>
+    </main>
+    <section class="home-card" style="margin: 2.5rem auto 0 auto;">
+      <!-- Conteúdo removido: objetivo do site, frase de impacto e depoimentos -->
+    </section>
+    <footer class="main-footer">
+      <nav>
+        <a href="sobre.html" class="footer-link">Sobre</a> ·
+        <a href="#" class="footer-link">Contato</a> ·
+        <a href="#" class="footer-link">Termos de Uso</a>
+      </nav>
+      <div class="footer-copy">&copy; 2025 Entre Elas. Todos os direitos reservados.</div>
+    </footer>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script>
+      requireAuth();
+      document.getElementById('user-logado').textContent = 'Usuária: ' + (localStorage.getItem('username') || '');
+    </script>
+  </body>
+</html>

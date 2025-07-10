@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entre Elas - Alterar Senha</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe0f0 0%, #fff0f6 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="container" aria-label="Alterar senha" style="max-width:400px;width:100%;margin:2rem auto;">
+    <div class="emoji" aria-hidden="true">💖</div>
+    <h2 id="tituloAlterarSenha">Alterar Senha</h2>
+    <form id="form-alterar-senha" autocomplete="off">
+      <label for="alterar-username">Usuária</label>
+      <input type="text" id="alterar-username" required autofocus placeholder="Digite seu nome de usuária" />
+
+      <label for="alterar-old-password">Senha Antiga</label>
+      <div class="input-wrapper">
+        <input type="password" id="alterar-old-password" required placeholder="Digite sua senha antiga" />
+        <button type="button" class="toggle-password" onclick="togglePass('alterar-old-password', this)" id="alterar-toggle-old-password" aria-label="Mostrar ou ocultar senha">👁️</button>
+      </div>
+
+      <label for="alterar-new-password">Nova Senha</label>
+      <div class="input-wrapper">
+        <input type="password" id="alterar-new-password" required aria-describedby="alterar-requisitos" placeholder="Digite a nova senha" />
+        <button type="button" class="toggle-password" onclick="togglePass('alterar-new-password', this)" id="alterar-toggle-new-password" aria-label="Mostrar ou ocultar senha">👁️</button>
+      </div>
+      <ul class="senha-requisitos" id="alterar-requisitos">
+        <li>Mínimo 6 caracteres</li>
+        <li>Pelo menos uma letra e um número</li>
+      </ul>
+
+      <label for="alterar-confirm-password">Confirmar Nova Senha</label>
+      <div class="input-wrapper">
+        <input type="password" id="alterar-confirm-password" required placeholder="Confirme a nova senha" />
+        <button type="button" class="toggle-password" onclick="togglePass('alterar-confirm-password', this)" id="alterar-toggle-confirm-password" aria-label="Mostrar ou ocultar senha">👁️</button>
+      </div>
+
+      <button type="submit" id="alterar-submit">Alterar Senha</button>
+      <div id="msgFeedback" class="feedback" aria-live="assertive" aria-atomic="true"></div>
+    </form>
+  </main>
+  <script src="assets/js/global.js"></script>
+  <script src="assets/js/profile.js"></script>
+  <script src="assets/js/utils.js"></script>
+</body>
+</html>

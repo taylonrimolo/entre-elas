@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - Entre Elas</title>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .sobre-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      background: linear-gradient(135deg, #ffe0f0 60%, #fff0f6 100%);
+      border-radius: var(--borda-padrao);
+      box-shadow: var(--sombra-padrao);
+      margin-bottom: 2.2rem;
+      text-align: center;
+    }
+    .sobre-hero h1 {
+      font-size: 2.2rem;
+      color: var(--rosa-principal);
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+    }
+    .sobre-hero p {
+      font-size: 1.15rem;
+      color: var(--cinza-escuro);
+      margin-bottom: 0.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .sobre-missao {
+      background: #fff;
+      border-radius: var(--borda-padrao);
+      box-shadow: var(--sombra-padrao);
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .sobre-missao h2 {
+      color: var(--rosa-principal);
+      font-size: 1.4rem;
+      margin-bottom: 0.7rem;
+    }
+    .sobre-missao p {
+      color: var(--cinza-escuro);
+      font-size: 1.08rem;
+      margin-bottom: 0;
+    }
+    .sobre-frase {
+      font-style: italic;
+      color: var(--rosa-escuro);
+      font-size: 1.18rem;
+      background: #fff0f6;
+      border-left: 4px solid var(--rosa-principal);
+      border-radius: 0.7rem;
+      margin: 2rem auto 2.5rem auto;
+      padding: 1.1rem 1.5rem;
+      max-width: 600px;
+      box-shadow: 0 2px 8px #0001;
+    }
+    .sobre-depoimentos {
+      background: #fff;
+      border-radius: var(--borda-padrao);
+      box-shadow: var(--sombra-padrao);
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .sobre-depoimentos h2 {
+      color: var(--rosa-principal);
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .sobre-carrossel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .sobre-slide {
+      background: #fff0f6;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 8px #0001;
+      padding: 1.2rem 1rem;
+      max-width: 270px;
+      min-width: 220px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .sobre-slide img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 0.7rem;
+      object-fit: cover;
+      border: 2px solid var(--rosa-principal);
+    }
+    .sobre-slide p {
+      font-size: 1.01rem;
+      color: var(--cinza-escuro);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .sobre-slide span {
+      font-size: 0.97rem;
+      color: var(--rosa-escuro);
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .sobre-carrossel {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .sobre-slide {
+        max-width: 98vw;
+        min-width: 0;
+      }
+    }
+    .sobre-carrossel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 340px;
+      margin-top: 1.2rem;
+    }
+    .sobre-carrossel-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+    }
+    .sobre-slide {
+      background: #fff0f6;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 12px #d6338422;
+      padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+      max-width: 350px;
+      min-width: 0;
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+      margin: 0 1.5rem;
+      position: relative;
+    }
+    .sobre-slide.ativo {
+      display: flex;
+      opacity: 1;
+    }
+    .sobre-slide img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 1.1rem;
+      object-fit: cover;
+      border: 3px solid var(--rosa-principal);
+      box-shadow: 0 2px 8px #d6338422;
+    }
+    .sobre-slide p {
+      font-size: 1.08rem;
+      color: var(--cinza-escuro);
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    .sobre-slide span {
+      font-size: 1rem;
+      color: var(--rosa-escuro);
+      font-weight: 600;
+    }
+    .sobre-arrow {
+      background: #fff;
+      border: none;
+      color: var(--rosa-principal);
+      font-size: 2.2rem;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      box-shadow: 0 2px 8px #d6338422;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: static;
+      z-index: 2;
+      transition: background 0.2s, color 0.2s;
+      margin: 0 1.2rem;
+    }
+    .sobre-arrow:hover {
+      background: var(--rosa-principal);
+      color: #fff;
+    }
+    .sobre-indicadores {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      position: static;
+      left: auto;
+      bottom: auto;
+      transform: none;
+      z-index: 1;
+    }
+    .sobre-indicador {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e0bbe4;
+      border: 2px solid #fff;
+      transition: background 0.2s, border 0.2s;
+      cursor: pointer;
+    }
+    .sobre-indicador.ativo {
+      background: var(--rosa-principal);
+      border: 2px solid var(--rosa-principal);
+    }
+    @media (max-width: 600px) {
+      .sobre-slide {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        margin: 0 0.2rem;
+      }
+      .sobre-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-left">
+      <img src="assets/img/logo.svg" alt="Logo Entre Elas" style="height:38px;vertical-align:middle;">
+      <span class="site-title">Entre Elas</span>
+    </div>
+    <div class="header-right">
+      <a href="/pagina-principal" class="logout-btn">Voltar</a>
+    </div>
+  </header>
+  <main class="container" style="max-width:900px;margin:2.5rem auto 2rem auto;">
+    <section class="sobre-hero">
+      <h1>Bem-vinda ao Entre Elas 💗</h1>
+      <p>Um espaço de apoio, acolhimento e transformação para mulheres.</p>
+    </section>
+    <section class="sobre-missao">
+      <h2>Missão do Site</h2>
+      <p>
+        O Entre Elas tem como missão acolher, orientar e apoiar mulheres que enfrentam situações de abuso, assédio ou desrespeito no ambiente de trabalho, oferecendo um espaço seguro para denúncia anônima, desabafo emocional, acesso a psicólogas parceiras (sem vínculo financeiro com o site) e oportunidades de emprego.<br><br>
+        Mais do que um site, é um refúgio onde a mulher é ouvida, respeitada e incentivada a recomeçar com dignidade e apoio.
+      </p>
+    </section>
+    <div class="sobre-frase">
+      <span>“Mulheres são memória, beleza, ancestralidade, identidade, força e mostra que a porta da felicidade é a igualdade.”</span>
+    </div>
+    <section class="sobre-depoimentos">
+      <h2>Depoimentos</h2>
+      <div class="sobre-carrossel" id="sobre-carrossel">
+        <div class="sobre-carrossel-inner">
+          <!-- Remover botões de seta -->
+          <div class="sobre-slide ativo">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Depoimento 1">
+            <p>“Depois que conheci esse espaço, voltei a acreditar em mim. Deus usou cada palavra para curar meu coração.”</p>
+            <span>– Mariana S., Recife-PE</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Depoimento 2">
+            <p>“Eu estava passando por uma crise emocional e encontrei acolhimento aqui. Não me senti sozinha.”</p>
+            <span>– Ana Paula R., São Paulo-SP</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Depoimento 3">
+            <p>“Foi aqui que aprendi a me valorizar como mulher e como filha de Deus. Gratidão por esse lugar.”</p>
+            <span>– Carla T., Belo Horizonte-MG</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Depoimento 4">
+            <p>“A rede de apoio psicológico mudou minha vida. Me ajudou a sair de um relacionamento abusivo com fé e coragem.”</p>
+            <span>– Nome fictício, por segurança</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/81.jpg" alt="Depoimento 5">
+            <p>“O Entre Elas me mostrou que não estou sozinha. Aqui encontrei força para recomeçar.”</p>
+            <span>– Juliana M., Salvador-BA</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Depoimento 6">
+            <p>“Recebi apoio emocional e orientação profissional. Recomendo para todas as mulheres!”</p>
+            <span>– Fernanda L., Curitiba-PR</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Depoimento 7">
+            <p>“O espaço de desabafo foi fundamental para minha saúde mental. Gratidão eterna!”</p>
+            <span>– Priscila T., Manaus-AM</span>
+          </div>
+          <div class="sobre-slide">
+            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Depoimento 8">
+            <p>“Aqui encontrei acolhimento, respeito e oportunidades de trabalho. Mudou minha vida!”</p>
+            <span>– Simone F., Porto Alegre-RS</span>
+          </div>
+        </div>
+        <div class="sobre-indicadores" id="sobre-indicadores"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="main-footer">
+    <nav>
+      <a href="sobre.html" class="footer-link">Sobre</a> ·
+      <a href="#" class="footer-link">Contato</a> ·
+      <a href="#" class="footer-link">Termos de Uso</a>
+    </nav>
+    <div class="footer-copy">&copy; 2025 Entre Elas. Todos os direitos reservados.</div>
+  </footer>
+<script>
+// Carrossel automático para depoimentos na página Sobre
+(function() {
+  const slides = document.querySelectorAll('.sobre-slide');
+  const indicadores = document.getElementById('sobre-indicadores');
+  let current = 0;
+  let interval = null;
+
+  function showSlide(idx) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('ativo', i === idx);
+    });
+    Array.from(indicadores.children).forEach((dot, i) => {
+      dot.classList.toggle('ativo', i === idx);
+    });
+  }
+
+  function goTo(idx) {
+    current = idx;
+    showSlide(current);
+    resetInterval();
+  }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  function resetInterval() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(nextSlide, 2000);
+  }
+
+  // Indicadores
+  indicadores.innerHTML = '';
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'sobre-indicador' + (i === 0 ? ' ativo' : '');
+    dot.addEventListener('click', () => goTo(i));
+    indicadores.appendChild(dot);
+  });
+
+  // Inicializa
+  showSlide(current);
+  resetInterval();
+})();
+</script>
+</body>
+</html> 
